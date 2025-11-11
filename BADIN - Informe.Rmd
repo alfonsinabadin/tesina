@@ -138,23 +138,23 @@ El objetivo general del presente proyecto es profundizar en el estudio y aplicac
 
 ## Procesamiento de Lenguaje Natural (NLP)
 
-El texto, tal como lo leemos y comprendemos los humanos, es rico en significado pero carece de una estructura intrínsecamente numérica, que es la base del procesamiento en los algoritmos de aprendizaje automático. El procesamiento de lenguaje natural es un área de investigación dentro de la informática y la inteligencia artificial (IA) que se ocupa de procesar el lenguaje humano. Este procesamiento generalmente implica traducir el lenguaje natural en datos (números) que una computadora puede usar para aprender sobre el mundo.
+El texto, tal como lo leemos y comprendemos los humanos, es rico en significado pero carece de una estructura numérica, que es la base del procesamiento en los algoritmos de aprendizaje automático. El procesamiento de lenguaje natural es un área de investigación dentro de la informática y la inteligencia artificial (IA) que se ocupa de procesar el lenguaje humano. Este procesamiento generalmente implica traducir el lenguaje natural en datos (números) que una computadora puede usar para aprender sobre el mundo.
 
-El proceso abarca tareas como la recolección, limpieza, normalización y tokenización de texto, estas últimas dos son las responsables de que la información textual pueda ser estructurada de manera que los modelos la interpreten y analicen eficazmente. En la Figura \@ref(fig:diagrama1)  (@vajjala2020) se pueden observar los pasos que comprende el proceso.
+El proceso abarca tareas como la recolección, limpieza, normalización y tokenización de texto, estas últimas dos son las responsables de que la información textual pueda ser estructurada de manera que los modelos la interpreten y analicen eficazmente. En la Figura \@ref(fig:diagrama1)  [@vajjala2020] se pueden observar los pasos que comprende el proceso.
 
-```{r diagrama1, fig.cap="Etapas genéricas en NLP", out.width="100%", fig.align='center',echo=FALSE, warning=FALSE, message=FALSE}
+```{r diagrama1, fig.cap="Etapas del NLP", out.width="100%", fig.align='center',echo=FALSE, warning=FALSE, message=FALSE}
 knitr::include_graphics("_imagenes/diagrama1.png")
 ```
 
-Aunque no sea evidente, el procesamiento de lenguaje natural (NLP) aparece en el día a día de las personas. Tiene una amplia variedad de aplicaciones prácticas, lo que lo convierte en una herramienta esencial en diversos campos. Por ejemplo:
+Aunque no sea evidente, el procesamiento de lenguaje natural (NLP) aparece en el día a día de las personas. Tiene una amplia variedad de aplicaciones prácticas, lo que lo convierte en una herramienta esencial en diversos campos, por ejemplo:
 
-- Mejoras en motores de búsqueda web.
-- Corrección ortográfica durante la búsqueda.
-- Revisión gramatical y ortográfica.
-- Desarrollo de chatbots y asistentes virtuales.
-- Generación de índices y tablas de contenido.
-- Filtrado de spam en correo electrónico.
-- Personalización en campañas de marketing.
+- mejoras en motores de búsqueda web,
+- corrección ortográfica durante la búsqueda,
+- revisión gramatical y ortográfica,
+- desarrollo de chatbots y asistentes virtuales,
+- generación de índices y tablas de contenido,
+- filtrado de spam en correo electrónico,
+- personalización en campañas de marketing.
 
 Este amplio rango de usos subraya su importancia como puente entre los lenguajes humanos y las capacidades computacionales.
 
@@ -172,21 +172,21 @@ Otra estrategia consiste en identificar fuentes relevantes de datos en internet,
 
 #### Combinación de fuentes de datos {-}
 
-En la práctica, los conjuntos de datos suelen provenir de fuentes heterogéneas, como *datasets* públicos, datos etiquetados manualmente y datos aumentados. Esta combinación es especialmente útil para construir modelos en etapas iniciales, cuando los datos específicos para un escenario particular son limitados.
+En la práctica, los conjuntos de datos suelen provenir de fuentes heterogéneas, como *datasets* públicos, datos etiquetados manualmente y datos de internet, al mismo tiempo. Esta combinación es especialmente útil para construir modelos en etapas iniciales, cuando los datos específicos para un escenario particular son limitados.
 
-En esta tesina se optó por hacer uso de una *API* de Google para obtener los datos de entrada para el análisis, este proceso será detallado en el apartado de \hyperref[sec-aplicacionpractica]{\underline{\text{aplicación práctica}}}
+En esta tesina se optó por hacer uso de una *API* de Google para obtener los datos de entrada para el análisis, este proceso será detallado en la sección \@ref(sec:aplicacionpractica).
 
 Esta etapa es crucial para garantizar la disponibilidad de datos limpios y útiles, que son la base para las siguientes etapas de procesamiento y modelado. Una vez que se cuenta con los datos recolectados, se procede al siguiente paso: la limpieza y el preprocesamiento de texto.
 
 ### Limpieza de texto
 
-La extracción y limpieza de texto se refiere al proceso de extraer de los datos de entrada el texto sin procesar, eliminando toda la información no textual, como marcas, metadatos, etc., y convirtiendolo al formato de codificación requerido. La extracción de texto es un paso estándar en el manejo de datos y, usualmente, no emplea técnicas específicas de NLP. Sin embargo, es un paso importante que tiene implicaciones para todos los demás aspectos. Además, también puede ser la parte más demandante en términos de tiempo dentro de un proyecto.
+La extracción y limpieza de texto se refiere al proceso de extraer de los datos de entrada el texto sin procesar, eliminando toda la información no textual, como marcas, metadatos, etc., y convirtiéndolo al formato de codificación requerido. La extracción de texto es un paso estándar en el manejo de datos y, usualmente, no emplea técnicas específicas de NLP. Sin embargo, es un paso importante que tiene implicaciones para todos los demás aspectos. Además, también puede ser la parte más demandante en términos de tiempo dentro de un proyecto.
 
 #### Pasos preliminares {-}
 
 Previo a la limpieza del texto, es necesario llevar a cabo una serie de transformaciones básicas que garanticen la homogeneidad del corpus. En primer lugar, se convierte todo el texto a minúsculas con el fin de evitar que palabras idénticas sean tratadas como distintas debido a diferencias en el uso de mayúsculas, por ejemplo, “Video” y “video”. Otro paso fundamental consiste en la eliminación de signos de puntuación, caracteres especiales y espacios innecesarios, que no aportan información semántica al análisis y pueden generar una dispersión artificial en el vocabulario. En esta etapa también se contempla la reducción de espacios múltiples a un único espacio, asegurando así una identificación más precisa de las palabras.
 
-Finalmente, se corrigen patrones de escritura característicos de entornos informales, como la repetición exagerada de letras para enfatizar una emoción (por ejemplo, “amoo” en lugar de “amo” o “encantaa” en lugar de “encanta”). Este tipo de modificaciones, frecuentes en comentarios de redes sociales, pueden inflar el vocabulario y dificultar la identificación de términos representativos. La normalización de estas formas al estándar correspondiente resulta clave para mejorar la coherencia interna del corpus y facilitar los pasos posteriores de análisis.
+Finalmente, se corrigen patrones de escritura característicos de entornos informales, como la repetición exagerada de letras para enfatizar una emoción (por ejemplo, “amoo” en lugar de “amo” o “encantaa” en lugar de “encanta”). Este tipo de modificaciones, frecuentes en comentarios de redes sociales, pueden aumentar la longitud del vocabulario y dificultar la identificación de términos representativos. La normalización de estas formas al estándar correspondiente resulta clave para mejorar la coherencia interna del corpus y facilitar los pasos posteriores de análisis.
 
 #### Tokenización {-}
 
@@ -197,15 +197,15 @@ La tokenización es un paso fundamental en el procesamiento del lenguaje natural
 - A nivel de carácter: cada token es un único carácter (letra, signo de puntuación, número, etc.). Ejemplo: “sol” → [“s”, “o”, “l”].
 - A nivel de oración: cada token corresponde a una oración completa. Ejemplo: “Hoy llueve. Mañana saldrá el sol.” → [“Hoy llueve.”, “Mañana saldrá el sol.”].
 
-#### Normalización de unicode {-}
+#### Normalización de Unicode {-}
 
-Al limpiar texto, especialmente que se ha obtenido a través de Web Scrapping, es posible que se encuentren varios caracteres Unicode, incluidos símbolos, emojis y otros caracteres gráficos, algunos ejemplos se muestran en la Figura \@ref(fig:diagrama2)  (@vajjala2020).
+Al limpiar texto, especialmente que se ha obtenido a través de Web Scrapping, es posible que se encuentren varios caracteres Unicode, incluidos símbolos, emojis y otros caracteres gráficos, algunos ejemplos se muestran en la Figura \@ref(fig:diagrama2) [@vajjala2020].
 
-```{r diagrama2, fig.cap="Caracteres unicode y su representación gráfica", out.width="100%", fig.align='center',echo=FALSE, warning=FALSE, message=FALSE}
+```{r diagrama2, fig.cap="Caracteres Unicode y su representación gráfica", out.width="100%", fig.align='center',echo=FALSE, warning=FALSE, message=FALSE}
 knitr::include_graphics("_imagenes/diagrama2.png")
 ```
 
-Para interpretar estos símbolos no textuales y caracteres especiales se utiliza la normalización de *unicode*, que convierte el texto en alguna forma de representación binaria para ser almacenado en una computadora. Existen varios esquemas de codificación, y la codificación predeterminada puede variar según el sistema operativo. 
+Para interpretar estos símbolos no textuales y caracteres especiales se utiliza la normalización de Unicode, que convierte el texto en alguna forma de representación binaria para ser almacenado en una computadora. Existen varios esquemas de codificación, y la codificación predeterminada puede variar según el sistema operativo. 
 
 El siguiente fragmento de código en R ejemplifica la limpieza de emojis en texto. Utilizando expresiones regulares, se eliminan todos los caracteres que no pertenezcan al alfabeto en minúsculas.
 
@@ -223,7 +223,7 @@ La salida es un conjunto de comentarios donde los emojis y otros símbolos fuero
 
 #### Eliminación de stopwords {-}
 
-Los *stopwords* son palabras funcionales que, si bien cumplen un rol gramatical importante (como preposiciones, artículos, pronombres...), no aportan contenido semántico relevante al análisis del significado global del texto.
+Las *stopwords* son palabras funcionales que, si bien cumplen un rol gramatical importante (como preposiciones, artículos, pronombres...), no aportan contenido semántico relevante al análisis del significado global del texto.
 
 El objetivo de esta etapa es reducir el ruido lingüístico y centrar el análisis en las palabras que efectivamente comunican información. Por ejemplo, en frases como `"gracias por el dato"` o `"esto es una joya"`, las palabras `por`, `el`, `es`, `una` son típicamente consideradas *stopwords*, mientras que `gracias`, `dato`, `joya` son términos de interés.
 
@@ -273,9 +273,9 @@ La distancia de Levenshtein o distancia de edición es una medida utilizada para
 - Eliminación de un caracter: arggentina $\rightarrow$ argentina (eliminar la ‘g’).
 - Sustitución de un caracter por otro: numero $\rightarrow$ número (reemplazar la ‘u’ por la ‘ú’).
 
-Hay una generalización de esta medida que consideran el intercambio de dos caracteres como una operación: la distancia de Levenshtein-Damerau. En este método, aparece:
+Hay una generalización de esta medida que considera el intercambio de dos caracteres como una operación: la distancia de Levenshtein-Damerau. En este método, aparece:
 
-- Transposición de un caracter por otro: paelta $\rightarrow$ paleta (intercambia el lugar de la ‘e’ y la ‘l’).
+- Transposición de caracteres: paelta $\rightarrow$ paleta (intercambia el lugar de la ‘e’ y la ‘l’).
 
 El método de corrección basado en la distancia de Levenshtein-Damerau se fundamenta en la búsqueda de la palabra más similar dentro de un diccionario para corregir una palabra mal escrita. Este procedimiento implica generar todas las posibles transformaciones de la palabra errónea mediante las operaciones de edición. Luego, cada una de estas transformaciones se compara con las palabras existentes en el diccionario, y aquellas que coincidan se agregan a una lista de sugerencias. Finalmente, la mejor corrección será aquella con la menor distancia a la palabra original.  
 
@@ -290,7 +290,7 @@ tabla_op <- data.frame(
     "urri, brri, buri, bur",
     "aburri, bburri, cburri, ..., zburri, burris, burria, ..., burriz",
     "aurri, burrs, murri, ..., burro, burrq, ..., burrz",
-    "ubrri, bruri, burr, burir"
+    "ubrri, bruri, burir"
   )
 )
 
@@ -309,8 +309,8 @@ library(dplyr)
 # 1. Token a corregir
 token <- "burri"
 # 2. Diccionario ficticio 
-diccionario <- c("burro", "burrito", "barri", "burla", "buri", 
-                 "perro", "burris", "aburris", "aburro", "caballo")
+diccionario <- c("burro", "burrito", "barri", "burla", 
+                 "perro", "aburris", "aburro", "caballo")
 # 3. Calculamos distancia DL
 resultados <- tibble::tibble(
   candidato = diccionario,
@@ -338,7 +338,7 @@ kable(resultados, format = "latex", booktabs = TRUE,
 
 Si bien es fácil identificar que `perro` o `caballo` no son buenas correcciones, observando el resultado de la distancia L-D se llega a la misma conclusión. Para este conjunto de datos y el ejemplo en particular, hay correcciones mejores en función de este cálculo.
 
-En síntesis, el uso de la distancia de Levenshtein-Damerau constituye una herramienta potente para la corrección ortográfica, ya que permite identificar palabras candidatas a partir de criterios formales de similitud. No obstante, el desafío principal radica en establecer un umbral adecuado de tolerancia en la distancia: una tolerancia demasiado estricta puede dejar sin corregir errores evidentes, mientras que una tolerancia demasiado laxa puede introducir correcciones incorrectas. De igual modo, disponer de un diccionario amplio, representativo y ajustado al dominio del corpus resulta esencial para que las sugerencias tengan sentido lingüístico y contextual. En conjunto, ambos elementos, son determinantes para perfeccionar los procesos de corrección ortográfica y garantizar resultados confiables en etapas posteriores del análisis de texto.
+En síntesis, el uso de la distancia de Levenshtein-Damerau constituye una herramienta potente para la corrección ortográfica, ya que permite identificar palabras candidatas a partir de criterios formales de similitud.  No obstante, los desafíos principales radican en establecer un umbral de tolerancia adecuado y en gestionar la carga computacional asociada. Una tolerancia demasiado estricta puede dejar sin corregir errores evidentes, mientras que una tolerancia demasiado laxa puede introducir correcciones incorrectas. A su vez, el proceso de comparar un término erróneo contra todas las palabras de un diccionario extenso es computacionalmente intensivo. De igual modo, disponer de un diccionario amplio, representativo y ajustado al dominio del corpus resulta esencial para que las sugerencias tengan sentido lingüístico y contextual. En conjunto, ambos elementos, son determinantes para perfeccionar los procesos de corrección ortográfica y garantizar resultados confiables en etapas posteriores del análisis de texto.
 
 #### Lematización {-}
 
@@ -379,11 +379,66 @@ En la Tabla \@ref(tab:tablalematizacion) se observan los resultados de la lemati
 - ADP: adposición.
 - PUNCT: puntuación.
 
-Estos son algunos de los tipos de palabras que el paquete `UDPipe` reconoce. Este etiquetado permite filtrar aquellas categorías con mayor carga semántica (sustantivos, verbos, adjetivos, adverbios y nombres propios) y así disminuir la dimensionalidad del *input* del modelo.
+Estos son algunos de los tipos de palabras que el paquete `UDPipe` reconoce. Este etiquetado permite filtrar aquellas categorías con mayor carga semántica (sustantivos, verbos, adjetivos, adverbios y nombres propios) y así disminuir la dimensionalidad de la entrada del modelo.
 
 ### Representación de texto
 
-La extracción de características relevantes de un texto es un paso clave para su procesamiento ya que incluso el mejor modelo posible, con información pobre, devuelve pobres resultados. En este apartado se desarrollarán algunas técnicas para transformar texto en una representación numérica que pueda alimentar un algoritmo de Machine Learning correctamente.
+La extracción de características relevantes (*feature extraction*) es un paso clave para el procesamiento de texto, ya que incluso el mejor modelo de *machine learning* devuelve resultados pobres si la información de entrada es inadecuada. En este apartado se desarrollarán algunas técnicas para transformar texto en una representación numérica robusta que pueda alimentar un algoritmo correctamente.
+
+#### Representación vectorial {-}
+
+La representación vectorial de un texto consiste en la transformación de una palabra u oración a un vector de números reales dentro de un espacio vectorial de $n$ dimensiones. Esta transformación se realiza a través de un modelo matemático y el vector resultante sirve para cuantificar las similitudes y diferencias entre dos fragmentos de texto. La manera más común de medir esta comparación es a través de la similitud coseno (o coseno del ángulo entre vectores).
+
+Dados dos vectores, $A$ y $B$, cada uno con $n$ componentes, la similitud coseno se calcula como:
+
+$$
+\cos{(\theta)}=\frac{A \cdot B}{|A||B|}
+$$
+
+Un resultado de 1 implica similitud total (el ángulo $θ$ es $0º$), y un resultado de -1 implica diferencia total (el ángulo $θ$ es $180º$). Además de la similitud coseno, la distancia euclídea es otra métrica frecuente para medir la proximidad o lejanía entre vectores.
+
+##### One-Hot Encoding {-}
+
+Una de las formas más sencillas y fundamentales de representar texto numéricamente es mediante la codificación One-Hot. En este enfoque, cada palabra $V$ del corpus se asocia a un identificador único y se representa como un vector binario de dimensión $|V|$. Este vector está compuesto de todos ceros, excepto en la posición correspondiente a la palabra en el vocabulario, donde se ubica un 1.
+
+Para ilustrar, se considera el siguiente corpus:
+D1: El perro muerde.
+D2: El gato muerde.
+D3: El perro ladra.
+D4: El gato maúlla.
+
+Luego de preprocesar el texto, el vocabulario resultante está compuesto por cinco palabras únicas:
+
+$$"perro","muerde", "gato", "ladra","maúlla"$$
+
+A cada palabra de este se le asigna un índice único y será representada como un vector binario de longitud 5.
+
+$$perro \rightarrow [1,0,0,0,0];...;ladra\rightarrow[0,0,0,1,0];maúlla\rightarrow[0,0,0,0,1]$$
+
+Entonces, la oración D1: “El perro muerde” se representa con One-Hot Encoding como la matriz:
+
+$$
+\mathbf{}\left[
+\begin{array}{cc}
+1 & 0 & 0 & 0 & 0\\
+0 & 1 & 0 & 0 & 0
+\end{array}\right]
+$$
+
+Si bien es un método simple, presenta dos desventajas principales: la alta dimensionalidad y la falta de información semántica, ya que la distancia coseno entre cualquier par de palabras distintas es 0 ya que las matrices resultan ortogonales.
+
+##### Bag of words {-}
+
+Una de las representaciones más clásicas del texto es el enfoque Bag of Words (BoW). Este método trata a un documento como una “bolsa de palabras”, ignorando su orden sintáctico, pero manteniendo un registro de la frecuencia con la que aparece cada término. La intuición detrás de BoW es que la frecuencia de ciertos términos puede caracterizar el contenido de un documento.
+
+Al igual que en One-Hot Encoding, BoW asigna un identificador único a cada palabra del vocabulario. Luego, representa cada documento como un vector de longitud igual al tamaño del vocabulario, donde el valor en cada posición indica cuántas veces aparece esa palabra en el documento.
+
+Tomando el ejemplo anterior, la representación BoW para la primera oración (El perro muerde) es $[1,1,0,0,0]$. Los documentos se vuelven comparables en función de su contenido léxico, como se observa en la Figura \@ref(fig:bow_ejemplo) donde se observa que los documentos D1 y D3 tienen mayor similitud al compartir el término $perro$.
+
+```{r bow_ejemplo}
+
+```
+
 
 \newpage 
 
@@ -393,7 +448,7 @@ En este apartado se expone la aplicación práctica de las técnicas de procesam
 
 ## Recolección de datos: comentarios de YouTube
 
-Utilizando la API de YouTube brindada por el servicio de Google Cloud y con la herramienta App Scripts integrada en SpreadSheets (Google), se realizó una recolección de informacion básica de los videos publicados entre el 1 de enero del 2023 y el 21 de diciembre del 2024 de los canales más vistos del país: LuzuTV, Olga, Un Poco De Ruido, La Casa Streaming, Bondi Live, Vorterix, Ubana Play y Blender. Luego, filtrando sólo los videos con duración mayor a 10 minutos (para evitar incluir *shorts* o recortes), se utilizó la misma API conectada a R (versión 4.4.0) y el paquete `tuber` para la recolección de comentarios de los videos identificados en la primer instancia (\hyperref[sec-anexoA]{\underline{\text{Anexo}}}). En la Tabla \@ref(tab:recoleccion1) se puede identificar la cantidad de información recolectada para cada canal de *streaming*.
+Utilizando la API de YouTube brindada por el servicio de Google Cloud y con la herramienta App Scripts integrada en SpreadSheets (Google), se realizó una recolección de informacion básica de los videos publicados entre el 1 de enero del 2023 y el 21 de diciembre del 2024 de los canales más vistos del país: LuzuTV, Olga, Un Poco De Ruido, La Casa Streaming, Bondi Live, Vorterix, Ubana Play y Blender. Luego, filtrando solo los videos con duración mayor a 10 minutos (para evitar incluir *shorts* o recortes), se utilizó la misma API conectada a R (versión 4.4.0) y el paquete `tuber` para la recolección de comentarios de los videos identificados en la primer instancia (\hyperref[sec-anexoA]{\underline{\text{Anexo}}}). En la Tabla \@ref(tab:recoleccion1) se puede identificar la cantidad de información recolectada para cada canal de *streaming*.
 
 ```{r carga, results='hide', warning=FALSE, message=FALSE, echo=FALSE, } 
 library(readxl)
@@ -510,29 +565,39 @@ kable(tabla_final,
   row_spec(nrow(tabla_final), background = "gray!15", bold = TRUE)
 ```
 
-Es de destacar que la API de YouTube cuenta con un límite de consulta para las respuestas a comentarios: se retienen únicamente los primeros 5 comentarios por cadena. Sin embargo, por estar dentro de un mismo "hilo", estos comentarios no cambian drásticamente en su temática y no afecta los fines de esta investigación. Además, el límite mencionado no permite tomar toda la información de una sola corrida, hubo que realizar la recolección de a un día por canal usando dos conexiones en simultáneo. Esta diferencia en la recolección se mitiga filtrando los comentarios según su fecha de publicación previa al día 05/09/2025 (día de la primera recolección). 
+Es de destacar que la API de YouTube cuenta con un límite de consulta para las respuestas a comentarios: se retienen únicamente los primeros 5 comentarios por cadena (es decir, el comentario original y las respuestas anidadas a este). Sin embargo, por estar dentro de un mismo "hilo", estos comentarios no cambian drásticamente en su temática y no afecta los fines de esta investigación. Además, el límite mencionado no permite tomar toda la información de una sola corrida, hubo que realizar la recolección de a un día por canal usando dos conexiones en simultáneo. Esta diferencia en la recolección se mitiga filtrando los comentarios según su fecha de publicación previa al día 05/09/2025 (día de la primera recolección). 
 
 ## Limpieza de texto
 
 En total se recopilaron 1.692.025 comentarios a los que se les aplicó una secuencia de preprocesamiento estándar en NLP:
 
-1. Minúsculas: conversión completa del texto a minúscula para evitar duplicidad por capitalización.
-2. Colapso de vocales repetidas: reducción de alargamientos (“amoo”, “encantaa” $\rightarrow$ “amo”, “encanta”), útil para comentarios informales.
-3. Filtrado de caracteres: se conservaron únicamente letras del alfabeto español (incluyendo tildes y “ñ”) y espacios, eliminando números, emojis y signos.
-4. Normalización de espacios: supresión de espacios múltiples.
-5. Eliminación de stopwords: remoción de palabras que no aportan carga semántica.
+1. Eliminación de enlaces web y *hashtags* con hipervínculos.
+2. Minúsculas: conversión completa del texto a minúscula para evitar duplicidad por capitalización.
+3. Colapso de vocales repetidas: reducción de alargamientos (“amoo”, “encantaa” $\rightarrow$ “amo”, “encanta”), útil para comentarios informales.
+4. Filtrado de caracteres: se conservaron únicamente letras del alfabeto español (incluyendo tildes y “ñ”) y espacios, eliminando números, emojis y signos.
+5. Normalización de espacios: supresión de espacios múltiples.
+6. Eliminación de stopwords: remoción de palabras que no aportan carga semántica.
 
 Con el objetivo de asistir la corrección ortográfica y preservar la jerga propia del dominio, se construyó un diccionario combinado a partir de dos fuentes: por un lado, las 20.000 palabras más frecuentes del propio corpus de comentarios y, por otro, un listado exhaustivo de palabras en español extraído de la base *Kaikki.org*, que recopila el contenido de *Wiktionary*. De esta manera, el diccionario resultante no solo incorpora modismos, nombres propios y expresiones características del corpus analizado, sino también un repertorio amplio de formas válidas del idioma español, constituyendo así una base más robusta para la etapa de corrección ortográfica.
 
 La estrategia propuesta para la corrección ortográfica es identificar *tokens* fuera del diccionario y proponer correcciones mediante la distancia de Leveinshtein-Damerau. En caso de empate en la distancia mínima, se seleccionará como corrección al candidato de mayor frecuencia en el diccionario, lo que favorece a las expresiones más habituales del corpus. Si bien Damerau sugiere que la gran mayoría de los errores se corrigen con una sola edición, en el presente trabajo se adoptó un umbral máximo de distancia menor o igual a 3. Esta decisión responde a la naturaleza del corpus, comentarios de YouTube, donde son habituales errores acumulados o repeticiones de caracteres. 
 
-Para optimizar el proceso de corrección, se incorporó un filtro preliminar basado en bigramas de caracteres, entendidos como secuencias de dos caracteres consecutivos dentro de una palabra. El procedimiento consiste en comparar los bigramas del *token* erróneo con los de cada candidato del diccionario y conservar únicamente aquellos que presentan al menos dos coincidencias. De este modo, se descartan antes del cálculo de la distancia de edición aquellas palabras que no comparten una estructura básica con el *token* original. Por ejemplo, la palabra `burri` genera los bigramas `bu`, `ur`, `rr` y `ri`. El candidato `buro` supera el filtro, ya que comparte los bigramas `bu` y `ur`, mientras que `casa` no lo cumple, dado que ninguno de sus bigramas (`ca`, `as`, `sa`) coincide con los del término analizado.
+Para optimizar el proceso de corrección, se incorporó un filtro preliminar basado en bigramas de caracteres, entendidos como secuencias de dos caracteres consecutivos dentro de una palabra. El procedimiento consiste en comparar los bigramas del *token* erróneo con los de cada candidato del diccionario y conservar únicamente aquellos que presentan al menos dos coincidencias. De este modo, se descartan antes del cálculo de la distancia de edición aquellas palabras que no comparten una estructura básica con el *token* original. Por ejemplo, la palabra `burri` genera los bigramas `bu`, `ur`, `rr` y `ri`. El candidato `burro` supera el filtro, ya que comparte los bigramas `bu`, `ur` y `rr`, mientras que `casa` no lo cumple, dado que ninguno de sus bigramas (`ca`, `as`, `sa`) coincide con los del término analizado.
 
-En la Tabla \@ref(tab:correccion) se pueden ver algunos ejemplos de la corrección realizada. De 38957 palabras con errores ortográficos, se obtuvo un conjunto de **X** palabras bien escritas. Este paso facilita la futura lematización y habilita la inserción del corpus al modelo.
+En la Tabla \@ref(tab:correccion) se pueden ver algunos ejemplos de la corrección realizada. De !!? palabras con errores ortográficos, se obtuvo un conjunto de !!? palabras bien escritas. Este paso facilita la futura lematización y habilita la inserción del corpus al modelo.
+
+```{r correccion}
+
+```
+
 
 Una vez realizada la corrección ortográfica, el siguiente paso consiste en la lematización de las palabras. Este proceso busca reducir cada forma flexionada o derivada a su lema, es decir, la forma base que representa la unidad léxica. De esta manera, palabras como “caminando”, “caminé” o “caminaremos” se normalizan en el lema “caminar”. La lematización permite disminuir la dispersión del vocabulario y concentrar la información en términos que capturan el significado esencial, facilitando así la construcción de una matriz documento–término más consistente y adecuada para el modelado posterior con LDA.
 
 En la Tabla \@ref(tab:lema) se pueden ver los lemas de las palabras corregidas en la Tabla \@ref(tab:correccion). 
+```{r lema}
+
+```
+
 
 ## Representación de texto
 
